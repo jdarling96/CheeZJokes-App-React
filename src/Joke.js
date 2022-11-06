@@ -1,27 +1,24 @@
 import React from "react";
 import "./Joke.css";
-
-function Joke({ vote, votes, text, id }) {
-  const upVote = () => vote(id, +1);
-  const downVote = () => vote(id, -1);
-
-  return (
-    <div className="Joke">
+import JokeList from "./JokeList";
+const Joke = props => (
+  
+  <div className="Joke">
       <div className="Joke-votearea">
-        <button onClick={upVote}>
+        <button onClick={() => props.vote(props.id, +1)}>
           <i className="fas fa-thumbs-up" />
         </button>
 
-        <button onClick={downVote}>
+        <button onClick={() => props.vote(props.id, -1)}>
           <i className="fas fa-thumbs-down" />
         </button>
 
-        {votes}
+        {props.votes}
       </div>
 
-      <div className="Joke-text">{text}</div>
+      <div className="Joke-text">{props.text}</div>
     </div>
-  );
-}
 
-export default Joke;
+)
+
+export default JokeList(Joke)
